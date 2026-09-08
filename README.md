@@ -27,6 +27,36 @@ brew tap siderolabs/tap
 brew install talosctl omnictl
 ```
 
+## Install specific major/minor versions
+
+Versioned formulae are available for pinned release lines alongside the
+unversioned formulae:
+
+| Formula | Available versions |
+| --- | --- |
+| `omnictl` | `@1.7`, `@1.8`, `@1.9`, `@1.10` |
+| `talosctl` | `@1.10`, `@1.11`, `@1.12`, `@1.13` |
+
+The unversioned formulae (`omnictl`, `talosctl`) continue to track the latest
+release and are linked into your `PATH`.
+
+```bash
+brew tap siderolabs/tap
+brew install siderolabs/tap/omnictl@1.9
+brew install siderolabs/tap/talosctl@1.13
+```
+
+Versioned formulae are installed as `keg_only`, so they can coexist with the
+unversioned formulae. Because they are not linked by default, invoke their
+binaries directly from the keg or link them on top:
+
+```bash
+$(brew --prefix siderolabs/tap/omnictl@1.9)/bin/omnictl --version
+
+# or link the versioned binary on top of the unversioned one
+brew link --force siderolabs/tap/omnictl@1.9
+```
+
 ## Updates
 
 Currently, updates of this repository are manual
